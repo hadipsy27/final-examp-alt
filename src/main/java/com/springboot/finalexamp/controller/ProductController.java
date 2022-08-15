@@ -21,25 +21,25 @@ public class ProductController {
     @GetMapping
     public ResponseEntity<Object> getAllProduct(){
         List<Product> products =  productService.getAllProduct();
-        return ResponseHandler.generateResponse(HttpStatus.OK, true, "Success", products);
+        return ResponseHandler.generateResponse(HttpStatus.OK, true, "Success find all product", products);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> getById(@PathVariable("id") Long id){
         Optional<Product> product = productService.getProductById(id);
-        return ResponseHandler.generateResponse(HttpStatus.OK, true, "Success", product);
+        return ResponseHandler.generateResponse(HttpStatus.OK, true, "Success find product", product);
     }
 
     @PostMapping
     public ResponseEntity<Object> create(@RequestBody Product product){
 //        return new ResponseEntity(productService.addProduct(product), HttpStatus.CREATED);
         Product newProduct = productService.addProduct(product);
-        return ResponseHandler.generateResponse(HttpStatus.OK, true, "Success", newProduct);
+        return ResponseHandler.generateResponse(HttpStatus.OK, true, "Success create new product", newProduct);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Object> delete(@PathVariable("id") Long id){
         Optional<Product> product =  productService.deleteProductById(id);
-        return ResponseHandler.generateResponse(HttpStatus.OK, true, "Success", product);
+        return ResponseHandler.generateResponse(HttpStatus.OK, true, "Success Delete product", product);
     }
 }
