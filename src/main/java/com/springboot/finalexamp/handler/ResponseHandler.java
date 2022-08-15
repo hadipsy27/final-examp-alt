@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 import java.util.*;
 
 public class ResponseHandler {
-    public static ResponseEntity<Object> generateResponse(HttpStatus status, boolean error, String message, Object responseObj) {
+    public static ResponseEntity<Object> generateResponse(HttpStatus status, boolean success, String message, Object responseObj) {
         Map<String, Object> map = new HashMap<String, Object>();
 
         // Asia/Jakarta Zone date time now
@@ -21,7 +21,7 @@ public class ResponseHandler {
             map.put("data", responseObj);
             map.put("timestamp",nowAsiaJakarta);
             map.put("status", status.value());
-            map.put("isSuccess", error);
+            map.put("isSuccess", success);
             map.put("message", message);
 
             return new ResponseEntity<Object>(map,status);
